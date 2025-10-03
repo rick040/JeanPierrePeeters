@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jean‑Pierre Peeters | Life coach, Personal Trainer & Teamcoaching</title>
+  <meta name="description" content="Life coaching, personal training en teamcoaching/workshops door Jean‑Pierre Peeters. Heldere aanpak, transparante tarieven en een gratis intake.">
+  <link rel="canonical" href="https://www.jean-pierre-peeters.nl/" />
+  <meta property="og:title" content="Jean‑Pierre Peeters | Life coach, Personal Trainer & Teamcoaching" />
+  <meta property="og:description" content="Life coaching, personal training en teamcoaching/workshops. Plan een gratis intake en ontdek een aanpak die wérkt." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.jean-pierre-peeters.nl/" />
+  <meta property="og:image" content="<!-- TODO: absolute social image url -->" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    /* =========================
+       DESIGN TOKENS
+       ========================= */
+    :root {
+      /* colors */
+      --bg: #F9FAFB;               /* page background */
+      --surface: #FFFFFF;          /* cards */
+      --t-900: #0A0F14;            /* headings */
+      --t-700: #1F2A37;            /* body strong */
+      --t-600: #334155;            /* body */
+      --t-500: #4B5563;            /* muteds */
+      --line: #E6E8EC;             /* hairline borders */
+      --brand-700: #123D32;        /* deep green */
+      --brand-600: #155E50;        /* primary */
+      --brand-500: #1E7B67;        /* hover */
+      --brand-050: #ECF8F4;        /* tint */
+      --accent: #8F6C3A;           /* subtle gold accent */
+
+      /* type scale (fluid) */
+      --fs-900: clamp(36px, 4.0vw, 54px);
+      --fs-800: clamp(28px, 3.0vw, 40px);
+      --fs-700: clamp(22px, 2.2vw, 28px);
+      --fs-600: clamp(18px, 1.6vw, 22px);
+      --fs-500: 18px;
+      --fs-400: 16px;
+      --fs-300: 14px;
+
+      /* spacing */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 96px;
+
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --shadow-1: 0 4px 20px rgba(16, 24, 40, 0.06);
+      --shadow-2: 0 10px 30px rgba(16, 24, 40, 0.10);
+      --container: 1200px;
+    }
+
+    /* base */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--t-600);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Inter", "SF Pro Text", Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    h1, h2, h3 { color: var(--t-900); line-height: 1.2; margin: 0 0 var(--space-4); font-family: "Ibarra Real Nova", Georgia, serif; font-weight: 600; }
+    h1 { font-size: var(--fs-900); letter-spacing: -0.02em; }
+    h2 { font-size: var(--fs-800); letter-spacing: -0.01em; }
+    h3 { font-size: var(--fs-700); }
+    p { margin: 0 0 var(--space-4); font-size: var(--fs-400); }
+    .container { width: min(100% - 40px, var(--container)); margin-inline: auto; }
+    .eyebrow { font-size: var(--fs-300); color: var(--brand-600); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+
+    /* links & buttons */
+    a { color: var(--brand-600); text-decoration: none; }
+    a:hover { color: var(--brand-500); }
+    .btn { display: inline-flex; align-items: center; gap: 10px; border-radius: 999px; padding: 12px 18px; font-weight: 600; font-size: var(--fs-400); cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background .2s ease; }
+    .btn--primary { background: var(--brand-600); color: #fff; box-shadow: var(--shadow-1); }
+    .btn--primary:hover { background: var(--brand-500); transform: translateY(-1px); box-shadow: var(--shadow-2); }
+    .btn--ghost { background: transparent; color: var(--brand-600); border: 1px solid var(--brand-600); }
+    .btn--ghost:hover { background: var(--brand-050); }
+    .btn:focus-visible { outline: 3px solid #94D9C7; outline-offset: 2px; }
+
+    /* ======= Utility ======= */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+    .muted { color: var(--t-500); }
+    .caption { font-size: var(--fs-300); color: var(--t-500); }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-1); padding: clamp(20px, 3.5vw, 28px); }
+    .section { padding: clamp(48px, 8vw, 96px) 0; }
+    .section--tint { background: #FFFFFF; }
+
+    /* ======= Top utility bar ======= */
+    .topbar { background: var(--brand-700); color: #E6FFFA; font-size: var(--fs-300); }
+    .topbar .container { display: flex; gap: 18px; align-items: center; justify-content: space-between; padding: 8px 0; }
+    .topbar a { color: #E6FFFA; opacity: .9; }
+
+    /* ======= Header / Nav ======= */
+    header.site-header { position: sticky; top: 0; z-index: 40; backdrop-filter: saturate(150%) blur(8px); background: rgba(249,250,251,0.75); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; color: var(--t-900); }
+    .brand .dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
+    nav ul { list-style: none; display: flex; gap: 26px; padding: 0; margin: 0; }
+    nav a { color: var(--t-700); font-weight: 600; font-size: var(--fs-400); }
+    nav a:hover { color: var(--brand-600); }
+
+    /* mobile nav */
+    .hamb { display: none; align-items: center; gap: 8px; }
+    .hamb button { background: transparent; border: 0; padding: 10px; border-radius: 8px; }
+    .hamb svg { width: 24px; height: 24px; }
+    .mobile-menu { position: fixed; inset: 0; background: rgba(10,15,20,.5); display: none; z-index: 60; }
+    .mobile-menu[aria-hidden="false"] { display: block; }
+    .mobile-panel { position: absolute; right: 0; top: 0; width: min(86vw, 420px); height: 100%; background: var(--surface); border-left: 1px solid var(--line); box-shadow: var(--shadow-2); padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+    .mobile-panel a { padding: 14px 10px; border-radius: 10px; color: var(--t-700); font-weight: 600; }
+    .mobile-panel a:hover { background: var(--brand-050); }
+
+    /* ======= Hero ======= */
+    .hero { position: relative; }
+    .hero .container { display: grid; grid-template-columns: 1.2fr .8fr; gap: var(--space-7); align-items: center; padding-top: var(--space-8); padding-bottom: var(--space-8); }
+    .hero-copy p { font-size: var(--fs-500); color: var(--t-600); }
+    .hero-badges { display: flex; gap: 22px; margin-top: var(--space-5); }
+    .hero-portrait { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/5; box-shadow: var(--shadow-2); border: 1px solid var(--line); background: linear-gradient(180deg, #F6FAF8 0%, #FFFFFF 100%); }
+    .hero-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-portrait .mask { position: absolute; inset: 0; background: radial-gradient(120% 100% at 100% 0%, rgba(18,61,50,.18) 0%, rgba(255,255,255,0) 60%); pointer-events: none; }
+
+    /* ======= Trust rail ======= */
+    .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: linear-gradient(0deg, #fff 0%, #fff 60%, #F6FAF8 100%); }
+    .trust .items { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); padding: var(--space-6) 0; text-align: center; }
+    .trust .kpi { font-size: var(--fs-700); font-weight: 700; color: var(--brand-700); }
+
+    /* ======= Services ======= */
+    .services .card { display: grid; grid-template-rows: auto 1fr auto; }
+    .service-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .service-icon { width: 40px; height: 40px; border-radius: 12px; background: var(--brand-050); display: grid; place-items: center; border: 1px solid var(--line); }
+    .service-icon svg { width: 20px; height: 20px; }
+    .card a.cta-link { margin-top: var(--space-3); font-weight: 600; }
+    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); transition: all .2s ease; }
+
+    /* ======= Process ======= */
+    .process .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-6); }
+    .step { padding: 0; }
+    .step .num { width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center; font-weight: 700; color: var(--brand-700); border: 1px solid var(--line); background: #fff; margin-bottom: var(--space-3); }
+
+    /* ======= Why ======= */
+    .why ul { columns: 2; gap: var(--space-6); padding-left: 18px; }
+    .why li { break-inside: avoid; margin-bottom: 10px; }
+
+    /* ======= Pricing ======= */
+    .pricing .panel { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
+    .price { display: flex; align-items: baseline; gap: 10px; }
+    .price .amount { font-size: var(--fs-800); font-weight: 800; color: var(--t-900); }
+
+    /* ======= Testimonials ======= */
+    .testimonials .carousel { position: relative; overflow: hidden; }
+    .slides { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; transition: transform .45s ease; }
+    .testimonial { padding: var(--space-6); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-1); }
+    .testimonial .quote { font-size: var(--fs-600); color: var(--t-700); }
+    .t-controls { margin-top: var(--space-4); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .t-dots { display: flex; gap: 10px; }
+    .t-dot { width: 10px; height: 10px; border-radius: 50%; background: #D1D5DB; border: none; }
+    .t-dot[aria-current="true"] { background: var(--brand-600); }
+
+    /* ======= Blog ======= */
+    .blog .post { display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--space-4); align-items: center; }
+    .blog .thumb { aspect-ratio: 4 / 3; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--line); background: #F3F4F6; }
+    .blog .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ======= Newsletter & Contact ======= */
+    form .row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    label { font-weight: 600; font-size: var(--fs-300); color: var(--t-700); display: block; margin-bottom: 6px; }
+    input, textarea { width: 100%; border: 1px solid var(--line); border-radius: 12px; font-size: var(--fs-400); padding: 12px 14px; background: #fff; color: var(--t-700); }
+    textarea { min-height: 140px; resize: vertical; }
+    input:focus-visible, textarea:focus-visible { outline: 3px solid #94D9C7; }
+
+    /* ======= Footer ======= */
+    footer { background: #0D1714; color: #CFE9E1; }
+    footer a { color: #CFE9E1; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-6); padding: var(--space-8) 0; }
+    .copyright { border-top: 1px solid rgba(255,255,255,.1); padding: 16px 0; font-size: var(--fs-300); color: #B7D7CD; }
+
+    /* ======= Motion preferences ======= */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+
+    /* ======= Responsive ======= */
+    @media (max-width: 1024px) {
+      nav ul { display: none; }
+      .hamb { display: flex; }
+      .hero .container { grid-template-columns: 1fr; }
+      .trust .items { grid-template-columns: repeat(2,1fr); }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .why ul { columns: 1; }
+      .blog .post { grid-template-columns: 1fr; }
+      form .row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, var(--container)); }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Utility Bar -->
+  <div class="topbar" role="region" aria-label="Contactbalk">
+    <div class="container">
+      <div>
+        <strong>Bel:</strong> <a href="tel:+31600000000">+31 6 00 00 00 00</a>
+        &nbsp;•&nbsp;
+        <strong>Mail:</strong> <a href="mailto:info@jean-pierre-peeters.nl">info@jean-pierre-peeters.nl</a>
+      </div>
+      <a class="btn btn--ghost" href="#contact">Gratis intake</a>
+    </div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header" aria-label="Hoofdnavigatie">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Jean‑Pierre Peeters home">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Jean‑Pierre Peeters</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Life coaching</a></li>
+          <li><a href="#services">Personal training</a></li>
+          <li><a href="#services">Teamcoaching & Workshops</a></li>
+          <li><a href="#blog">Blogs</a></li>
+          <li><a href="#about">Over ons</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="hamb">
+        <button id="menuButton" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <a class="btn btn--primary" href="#contact">Plan gratis intake</a>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+      <div class="mobile-panel" role="dialog" aria-modal="true" aria-labelledby="m-title">
+        <div class="brand" id="m-title" style="margin-bottom:12px"><span class="dot"></span><span>Menu</span></div>
+        <a href="#home">Home</a>
+        <a href="#services">Life coaching</a>
+        <a href="#services">Personal training</a>
+        <a href="#services">Teamcoaching & Workshops</a>
+        <a href="#blog">Blogs</a>
+        <a href="#about">Over ons</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn--primary" href="#contact" style="margin-top:auto">Plan gratis intake</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- Hero -->
+    <section class="hero section section--tint" aria-label="Intro">
+      <div class="container">
+        <div class="hero-copy">
+          <div class="eyebrow">Coaching die werkt</div>
+          <h1>Van vastzitten naar vooruitgang — met nuchtere, resultaatgerichte coaching.</h1>
+          <p>Ik help individuen, teams en organisaties met heldere stappen richting blijvende verandering. Praktisch, menselijk en zonder franje. Start met een gratis en vrijblijvende intake.</p>
+          <div class="hero-badges">
+            <a class="btn btn--primary" href="#contact">Plan gratis intake</a>
+            <a class="btn btn--ghost" href="#services">Lees meer</a>
+          </div>
+        </div>
+        <div class="hero-portrait" aria-hidden="true">
+          <!-- TODO: Replace with real portrait -->
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='1000'%3E%3Crect width='800' height='1000' fill='%23e8edea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%238aa399' font-size='28' font-family='sans-serif'%3EPortrait placeholder%3C/text%3E%3C/svg%3E" alt="Jean‑Pierre Peeters portret" loading="lazy" />
+          <div class="mask"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Rail -->
+    <section class="trust" aria-label="Kerncijfers en vertrouwen">
+      <div class="container">
+        <div class="items">
+          <div>
+            <div class="kpi">10+ jaar</div>
+            <div class="caption">Ervaring in coaching & training</div>
+          </div>
+          <div>
+            <div class="kpi">500+ sessies</div>
+            <div class="caption">Individueel & in teams</div>
+          </div>
+          <div>
+            <div class="kpi">4.9/5</div>
+            <div class="caption">Gemiddelde beoordeling</div>
+          </div>
+          <div>
+            <div class="kpi">NL & BE</div>
+            <div class="caption">Op locatie en online</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services section" aria-label="Diensten">
+      <div class="container">
+        <div style="max-width:760px;margin-bottom:var(--space-6)">
+          <div class="eyebrow">Diensten</div>
+          <h2>Straightforward diensten zonder verborgen verrassingen.</h2>
+          <p class="muted">Life coaching, personal training en teamcoaching/workshops. Gericht op bewustwording, doorbraak en duurzame integratie in het dagelijks leven en werk.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card" tabindex="0">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l3 6 6 .9-4.5 4.2 1 6-5.5-3-5.5 3 1-6L3 9.9 9 9l3-6z" fill="currentColor" opacity=".9"/></svg></div>
+              <h3>Life coaching</h3>
+            </div>
+            <p>Individuele trajecten rondom stress, focus, relaties, loopbaan, veerkracht en zingeving. Concreet, warm en eerlijk.</p>
+            <a class="cta-link" href="#pricing">Meer over trajecten →</a>
+          </article>
+
+          <article class="card" tabindex="0">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 20v-8h2v8H7zm4 0V4h2v16h-2zm4 0v-5h2v5h-2z" fill="currentColor"/></svg></div>
+              <h3>Personal training</h3>
+            </div>
+            <p>Fysiek en mentaal sterker met een realistisch plan. Kracht, mobiliteit, ademhaling en herstel als basis.</p>
+            <a class="cta-link" href="#pricing">Bekijk mogelijkheden →</a>
+          </article>
+
+          <article class="card" tabindex="0">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16v2H4V7zm0 4h10v2H4v-2zm0 4h7v2H4v-2z" fill="currentColor"/></svg></div>
+              <h3>Teamcoaching & Workshops</h3>
+            </div>
+            <p>Heldere samenwerking, meer eigenaarschap en betere gesprekken. Maatwerk voor teams en organisaties.</p>
+            <a class="cta-link" href="#contact">Plan verkenningsgesprek →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process section section--tint" aria-label="Aanpak">
+      <div class="container">
+        <div style="max-width:760px;margin-bottom:var(--space-6)">
+          <div class="eyebrow">Aanpak</div>
+          <h2>Drie heldere fases: bewustwording, doorbraak, integratie.</h2>
+          <p class="muted">Elk traject volgt een logische structuur. We maken het eenvoudig om vol te houden, met kleine stappen en scherpe reflectie.</p>
+        </div>
+        <div class="steps">
+          <div class="card step">
+            <div class="num">1</div>
+            <h3>Bewustwording</h3>
+            <p>We brengen patronen, stressoren en doelen in kaart. Concreet en feitelijk. Dit vormt het vertrekpunt.</p>
+          </div>
+          <div class="card step">
+            <div class="num">2</div>
+            <h3>Doorbraak</h3>
+            <p>Gerichte interventies met elementen uit coachingpsychologie, NLP en (waar passend) hypnose‑technieken.</p>
+          </div>
+          <div class="card step">
+            <div class="num">3</div>
+            <h3>Integratie</h3>
+            <p>Vertaling naar gedrag en routines. Tools en check‑ins om het nieuwe normaal te borgen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why -->
+    <section class="why section" aria-label="Waarom deze aanpak">
+      <div class="container grid-2">
+        <div>
+          <div class="eyebrow">Waarom dit werkt</div>
+          <h2>Menselijk, nuchter en doeltreffend.</h2>
+          <p>We combineren bewezen methodes met een praktische houding. Geen zweverig taalgebruik; wel resultaat en verantwoordelijkheid.</p>
+        </div>
+        <div>
+          <ul>
+            <li>Heldere doelen en meetbare voortgang.</li>
+            <li>Evidence‑informed: coachingpsychologie, NLP, gedragsverandering.</li>
+            <li>Optioneel: hypnose‑technieken bij hardnekkige patronen.</li>
+            <li>Online of op locatie; ook avonduren mogelijk.</li>
+            <li>Werkgeversregeling en ontwikkelbudgetten toepasbaar.</li>
+            <li>Privacy en vertrouwelijkheid gegarandeerd.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing section section--tint" aria-label="Tarieven">
+      <div class="container grid-2">
+        <div>
+          <div class="eyebrow">Tarieven</div>
+          <h2>Transparant en eenvoudig.</h2>
+          <div class="card panel">
+            <div class="price"><span class="amount">€60</span><span>/ individuele sessie (60–75 min)</span></div>
+            <p>Gemiddeld 3–8 sessies per traject, afhankelijk van je vraag. Online of op locatie. Reiskosten buiten regio in overleg.</p>
+            <p class="muted">Zakelijk: trajecten op maat voor teams en leidinggevenden. Offerte op aanvraag. Werkgevers- en opleidingsbudgetten vaak mogelijk.</p>
+            <div>
+              <a class="btn btn--primary" href="#contact">Plan gratis intake</a>
+              <a class="btn btn--ghost" href="#contact" style="margin-left:8px">Vraag offerte</a>
+            </div>
+          </div>
+        </div>
+        <div class="card" aria-label="Veelgestelde punten">
+          <h3>Praktisch</h3>
+          <ul>
+            <li>Locatie: online of in overleg op locatie (NL/BE).</li>
+            <li>Annuleren: tot 24 uur vooraf kosteloos.</li>
+            <li>Betaling: per sessie of in trajectbundel.</li>
+            <li>AVG/Privacy: strikt vertrouwelijk; geen data‑deling.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials section" aria-label="Ervaringen">
+      <div class="container">
+        <div style="max-width:760px;margin-bottom:var(--space-6)">
+          <div class="eyebrow">Ervaringen</div>
+          <h2>Cliënten over de samenwerking.</h2>
+        </div>
+        <div class="carousel card" id="t-carousel">
+          <div class="slides" id="t-slides">
+            <figure class="testimonial">
+              <blockquote class="quote">“Na drie sessies voelde ik voor het eerst rust en richting. Concreet, warm en effectief.”</blockquote>
+              <figcaption class="caption">— M., Eindhoven</figcaption>
+            </figure>
+            <figure class="testimonial">
+              <blockquote class="quote">“Onze teamdag leverde duidelijke afspraken en meer begrip op. Fijn, zonder poespas.”</blockquote>
+              <figcaption class="caption">— Teamleider, zorg</figcaption>
+            </figure>
+            <figure class="testimonial">
+              <blockquote class="quote">“De combinatie van fysieke en mentale training werkte onverwacht goed. Aanrader.”</blockquote>
+              <figcaption class="caption">— M., Helmond</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="t-controls">
+          <div class="t-dots" role="tablist" aria-label="Testimonial slides">
+            <button class="t-dot" role="tab" aria-controls="slide-1" aria-current="true"></button>
+            <button class="t-dot" role="tab" aria-controls="slide-2"></button>
+            <button class="t-dot" role="tab" aria-controls="slide-3"></button>
+          </div>
+          <div>
+            <button class="btn btn--ghost" id="t-prev" aria-label="Vorige">←</button>
+            <button class="btn btn--ghost" id="t-next" aria-label="Volgende">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Highlights -->
+    <section id="blog" class="blog section section--tint" aria-label="Blogs">
+      <div class="container">
+        <div style="max-width:760px;margin-bottom:var(--space-6)">
+          <div class="eyebrow">Blog</div>
+          <h2>Inzicht en inspiratie uit de praktijk.</h2>
+        </div>
+        <div class="grid-3">
+          <article class="card post">
+            <div class="thumb" aria-hidden="true"><img loading="lazy" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='800' height='600' fill='%23eef3ef'/%3E%3C/svg%3E"></div>
+            <div>
+              <h3>Stress reguleren in 5 minuten per dag</h3>
+              <p class="caption">12 mei 2025</p>
+              <p>Een kleine routine die je zenuwstelsel helpt kalmeren en focus terugbrengt.</p>
+              <p><a href="#" aria-label="Lees artikel Stress reguleren">Lees artikel →</a></p>
+            </div>
+          </article>
+          <article class="card post">
+            <div class="thumb" aria-hidden="true"><img loading="lazy" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='800' height='600' fill='%23eef3ef'/%3E%3C/svg%3E"></div>
+            <div>
+              <h3>Teamgesprekken die wél werken</h3>
+              <p class="caption">28 apr 2025</p>
+              <p>Van meningen naar afspraken: eenvoudige kaders voor betere samenwerking.</p>
+              <p><a href="#">Lees artikel →</a></p>
+            </div>
+          </article>
+          <article class="card post">
+            <div class="thumb" aria-hidden="true"><img loading="lazy" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='800' height='600' fill='%23eef3ef'/%3E%3C/svg%3E"></div>
+            <div>
+              <h3>Waarom kleine stappen groot resultaat geven</h3>
+              <p class="caption">14 apr 2025</p>
+              <p>De psychologische basis achter consistentie en gewoontevorming.</p>
+              <p><a href="#">Lees artikel →</a></p>
+            </div>
+          </article>
+        </div>
+        <div style="margin-top:var(--space-5)"><a class="btn btn--ghost" href="#">Alle blogs</a></div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section" aria-label="Aanmelden nieuwsbrief">
+      <div class="container grid-2">
+        <div>
+          <div class="eyebrow">Nieuwsbrief</div>
+          <h2>Ontvang eens per maand een nuchter inzicht.</h2>
+          <p class="muted">Alleen waardevolle tips en artikelen. Geen spam. Afmelden kan met één klik.</p>
+        </div>
+        <form class="card" action="#" method="post" novalidate>
+          <div class="row">
+            <div>
+              <label for="nl-name">Naam</label>
+              <input id="nl-name" name="name" type="text" autocomplete="name" />
+            </div>
+            <div>
+              <label for="nl-email">E‑mail</label>
+              <input id="nl-email" name="email" type="email" autocomplete="email" required />
+            </div>
+          </div>
+          <p class="caption">Door je aan te melden ga je akkoord met onze <a href="#">privacyverklaring</a>.</p>
+          <button class="btn btn--primary" type="submit">Aanmelden</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section section--tint" aria-label="Contact">
+      <div class="container grid-2">
+        <div>
+          <div class="eyebrow">Contact</div>
+          <h2>Plan je gratis intake.</h2>
+          <p>Vul het formulier in of neem direct contact op. We reageren binnen 24 uur.</p>
+          <div class="card">
+            <p><strong>Telefoon:</strong> <a href="tel:+31600000000">+31 6 00 00 00 00</a></p>
+            <p><strong>E‑mail:</strong> <a href="mailto:info@jean-pierre-peeters.nl">info@jean-pierre-peeters.nl</a></p>
+            <p><strong>Regio:</strong> Eindhoven e.o. • Online NL/BE</p>
+          </div>
+        </div>
+        <form class="card" action="#" method="post" aria-label="Contactformulier" novalidate>
+          <div class="row">
+            <div>
+              <label for="c-name">Naam</label>
+              <input id="c-name" name="name" required />
+            </div>
+            <div>
+              <label for="c-phone">Telefoon</label>
+              <input id="c-phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="c-email">E‑mail</label>
+              <input id="c-email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div>
+              <label for="c-topic">Onderwerp</label>
+              <input id="c-topic" name="topic" />
+            </div>
+          </div>
+          <div>
+            <label for="c-msg">Bericht</label>
+            <textarea id="c-msg" name="message" required></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit">Verstuur</button>
+          <p class="caption">Door te versturen ga je akkoord met onze <a href="#">privacyverklaring</a>.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- About (compact) -->
+    <section id="about" class="section" aria-label="Over ons">
+      <div class="container grid-2">
+        <div>
+          <div class="eyebrow">Over</div>
+          <h2>Over Jean‑Pierre.</h2>
+          <p>Coach en trainer met een nuchtere stijl. Ik combineer mentale en fysieke principes zodat verandering beklijft. Ik werk met particulieren, teams en leidinggevenden. Afspraak mogelijk overdag en ‘s avonds, online of op locatie.</p>
+        </div>
+        <div class="card">
+          <h3>Certificering & achtergrond</h3>
+          <ul>
+            <li>Coachopleiding en bijscholing in coachingpsychologie.</li>
+            <li>NLP‑practitioner; aanvullende hypnose‑technieken.</li>
+            <li>Ervaring in sportcoaching en teamontwikkeling.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid" aria-label="Footer">
+      <div>
+        <div class="brand" aria-label="Logo"><span class="dot"></span><span>Jean‑Pierre Peeters</span></div>
+        <p class="caption" style="margin-top:10px">Life coaching • Personal training • Teamcoaching</p>
+      </div>
+      <div>
+        <h3 style="font-size:18px;margin-bottom:12px">Navigatie</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
+          <li><a href="#services">Diensten</a></li>
+          <li><a href="#pricing">Tarieven</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#about">Over</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:18px;margin-bottom:12px">Contact</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
+          <li><a href="mailto:info@jean-pierre-peeters.nl">info@jean-pierre-peeters.nl</a></li>
+          <li><a href="tel:+31600000000">+31 6 00 00 00 00</a></li>
+          <li>Eindhoven e.o. • Online NL/BE</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:18px;margin-bottom:12px">Juridisch</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
+          <li><a href="#">Algemene voorwaarden</a></li>
+          <li><a href="#">Privacyverklaring (AVG)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container copyright">© <span id="y"></span> Jean‑Pierre Peeters. Alle rechten voorbehouden.</div>
+  </footer>
+
+  <!-- JSON-LD (basic Organization/LocalBusiness) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Jean‑Pierre Peeters Coaching",
+    "url": "https://www.jean-pierre-peeters.nl/",
+    "email": "info@jean-pierre-peeters.nl",
+    "telephone": "+31600000000",
+    "areaServed": ["Netherlands", "Belgium"],
+    "sameAs": [],
+    "description": "Life coaching, personal training en teamcoaching/workshops. Transparante tarieven en gratis intake.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "NL",
+      "addressLocality": "Eindhoven"
+    }
+  }
+  </script>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle with focus trap
+    const menuBtn = document.getElementById('menuButton');
+    const menu = document.getElementById('mobileMenu');
+    let lastFocused;
+    function openMenu() {
+      lastFocused = document.activeElement;
+      menuBtn.setAttribute('aria-expanded', 'true');
+      menu.setAttribute('aria-hidden', 'false');
+      const focusable = menu.querySelectorAll('a,button');
+      if (focusable[0]) focusable[0].focus();
+      document.addEventListener('keydown', escClose);
+    }
+    function closeMenu() {
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      if (lastFocused) lastFocused.focus();
+      document.removeEventListener('keydown', escClose);
+    }
+    function escClose(e){ if(e.key === 'Escape') closeMenu(); }
+    menuBtn.addEventListener('click', () => {
+      const open = menu.getAttribute('aria-hidden') === 'false';
+      open ? closeMenu() : openMenu();
+    });
+    menu.addEventListener('click', (e)=>{ if(e.target === menu) closeMenu(); });
+
+    // In-view reveal
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach((el)=>{
+        if(el.isIntersecting){ el.target.classList.add('reveal-in'); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.section, .card').forEach(el=>{
+      el.style.opacity = .001;
+      el.style.transform = 'translateY(10px)';
+      observer.observe(el);
+    });
+    const style = document.createElement('style');
+    style.innerHTML = `.reveal-in{opacity:1!important;transform:none!important;transition:opacity .35s ease, transform .35s ease}`;
+    document.head.appendChild(style);
+
+    // Testimonials carousel
+    const slides = document.getElementById('t-slides');
+    const dots = Array.from(document.querySelectorAll('.t-dot'));
+    let idx = 0; let timer;
+    function go(i){ idx = (i + dots.length) % dots.length; slides.style.transform = `translateX(-${idx*100}%)`; dots.forEach((d,k)=>d.setAttribute('aria-current', k===idx? 'true':'false')); }
+    function next(){ go(idx+1); }
+    function prev(){ go(idx-1); }
+    document.getElementById('t-next').addEventListener('click', next);
+    document.getElementById('t-prev').addEventListener('click', prev);
+    dots.forEach((d,i)=> d.addEventListener('click', ()=>go(i)) );
+    function autoplay(){ clearInterval(timer); timer = setInterval(next, 6000); }
+    autoplay();
+    slides.addEventListener('pointerenter', ()=>clearInterval(timer));
+    slides.addEventListener('pointerleave', autoplay);
+  </script>
+</body>
+</html>
